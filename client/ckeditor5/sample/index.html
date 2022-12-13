@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+	Copyright (c) 2014-2022, CKSource Holding sp. z o.o. All rights reserved.
+	This file is licensed under the terms of the MIT License (see LICENSE.md).
+-->
+
+<html lang="en" dir="ltr">
+
+<head>
+	<title>CKEditor 5 DecoupledDocumentEditor build</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body data-editor="DecoupledDocumentEditor" data-collaboration="false" data-revision-history="false">
+
+	<main>
+		<div class="document-editor__toolbar"></div>
+		
+		<div class="editor">
+
+			<h2>Bilingual Personality Disorder</h2>
+			<figure class="image image-style-side"><img
+					src="https://c.cksource.com/a/1/img/docs/sample-image-bilingual-personality-disorder.jpg">
+				<figcaption>One language, one person.</figcaption>
+			</figure>
+
+
+		</div>
+	</main>
+
+	<script src="../build/ckeditor.js"></script>
+	<script>DecoupledDocumentEditor
+			.create(document.querySelector('.editor'), {
+
+				licenseKey: '',
+
+				autosave: {
+					save(editor) {
+						console.log(editor.getData());
+						localStorage.setItem('content', editor.getData());
+					}
+				}
+
+			})
+			.then(editor => {
+				window.editor = editor;
+				editor.setData(localStorage.getItem('content') || "");
+
+				// Set a custom container for the toolbar.
+				document.querySelector('.document-editor__toolbar').appendChild(editor.ui.view.toolbar.element);
+				document.querySelector('.ck-toolbar').classList.add('ck-reset_all');
+			})
+			.catch(error => {
+				console.error('Oops, something went wrong!');
+				console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+				console.warn('Build id: raocq2m9wyfb-kpjnsey9z8rd');
+				console.error(error);
+			});
+	</script>
+</body>
+
+</html>

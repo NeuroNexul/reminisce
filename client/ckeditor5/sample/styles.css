@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.document-editor__toolbar {
+	width: 100%;
+	height: 41px;
+}
+
+.editor {
+	width: 100%;
+	height: calc(100% - 41px);
+}
