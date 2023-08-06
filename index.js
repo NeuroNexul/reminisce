@@ -52,6 +52,7 @@ app.use(cors({
       origin: "*",
       credentials: true
 }));
+app.use(express.static('/client/build'));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 /**
